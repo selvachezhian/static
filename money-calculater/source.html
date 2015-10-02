@@ -1,0 +1,97 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Money Counter demo by Selva Chezhian</title>
+  
+  <style type="text/css">
+    ul li {
+    list-style-type: none;
+    line-height: 1.8;
+}
+label {
+    width: 50px;
+    float: left;
+}
+#value {
+    color: #961ADE;
+    font-weight: bold;
+    font-size: 25px;
+}
+  </style>
+  
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+var elements = document.getElementsByClassName('numbers');
+document.addEventListener("input", function (e) {
+    total = calculateTotal();
+    document.getElementById('value').innerHTML = total;
+}, false);
+
+function calculateTotal() {
+    totalArr = [];
+    l = elements.length;
+    for (i = 0; i < l; i++) {
+        totalArr.push(calculateEach(elements[i]));
+    }
+    return totalArr.reduce(function (pv, cv) {
+        return pv + cv;
+    }, 0);
+}
+
+function calculateEach(elem) {
+    return elem.value * elem.dataset.val;
+}
+}//]]> 
+
+</script>
+
+</head>
+<body>
+  <h3>Money Counter</h3>
+
+<ul>
+    <li>
+        <label>₹1000</label>
+        <input type="number" class="numbers" data-val="1000">
+    </li>
+    <li>
+        <label>₹500</label>
+        <input type="number" class="numbers" data-val="500">
+    </li>
+    <li>
+        <label>₹100</label>
+        <input type="number" class="numbers" data-val="100">
+    </li>
+    <li>
+        <label>₹50</label>
+        <input type="number" class="numbers" data-val="50">
+    </li>
+    <li>
+        <label>₹20</label>
+        <input type="number" class="numbers" data-val="20">
+    </li>
+    <li>
+        <label>₹10</label>
+        <input type="number" class="numbers" data-val="10">
+    </li>
+    <li>
+        <label>₹5</label>
+        <input type="number" class="numbers" data-val="5">
+    </li>
+    <li>
+        <label>₹2</label>
+        <input type="number" class="numbers" data-val="2">
+    </li>
+    <li>
+        <label>₹1</label>
+        <input type="number" class="numbers" data-val="1">
+    </li>
+</ul>
+<div id="result"> <strong>Total Amount</strong>
+ <span id="value">0</span>
+
+</div>
+
+</body></html>
